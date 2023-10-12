@@ -1,0 +1,56 @@
+
+
+/* Estilos adicionales para el formulario de inicio de sesión */
+
+.login-form {
+    background-color: #333; /* Fondo negro */
+    color: #fff; /* Texto blanco */
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 100%; /* Ancho del formulario */
+    max-width: 400px; /* Ancho máximo */
+    margin: 0 auto; /* Centrado horizontalmente */
+  }
+  
+  .avatar{
+    margin-top: 16px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+  }
+
+  
+  /* Estilos para los botones */
+  .btn {
+    background-color: #007bff; /* Color de fondo del botón */
+    color: #fff; /* Color de texto del botón */
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  /* Estilos adicionales para los enlaces de registro y contraseña olvidada */
+  .register-link,
+  .forgot-password-link {
+    color: #007bff; /* Color del enlace */
+    text-decoration: none; /* Sin subrayado */
+    margin-top: 10px; /* Espacio superior entre enlaces */
+    display: block; /* Hacer que los enlaces ocupen todo el ancho disponible */
+  }
+  
+ 
+  /* Estilos para el contenido interno */
+  .content {
+    margin: 0 auto; /* Centrar horizontalmente utilizando margin */
+  
+    max-width: 400px; /* Ancho máximo del contenido */
+    padding: 20px; /* Espaciado interior */
+    background-color: rgba(9, 7, 7, 0.8); /* Fondo oscuro */
+    border-radius: 10px; /* Bordes redondeados */
+  }
+  
+  
+  

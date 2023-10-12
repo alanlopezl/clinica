@@ -1,0 +1,41 @@
+<mat-sidenav-container class="example-container">
+    <mat-sidenav-content>
+      <div class="col-md-6 offset-md-3">
+        <div class="content mat-elevation-z8 justify-content-center">
+          <div class="login-form">
+            <img class="avatar logo mat elevation z8 mt-5" src="./imagenes/logo.png" alt="Logo">
+            <div class="mt-2">
+              <label for="username" class="mt-5 d-flex justify-content-center">Usuario</label>
+              <input type="text" id="username" [(ngModel)]="username" class="form-control mt-2">
+            </div>
+            <div class="mt-2">
+              <label for="password" class="mt-5 d-flex justify-content-center">Contraseña</label>
+              <input type="password" id="password" [(ngModel)]="password" class="form-control mt-2">
+            </div>
+            <div class="mt-2">
+              <label for="sucursal" class="mt-5 d-flex justify-content-center">Sucursales</label>
+              <select id="sucursal" class="form-control mt-2">
+                <option value="tegucigalpa">Tegucigalpa</option>
+                <option value="olancho">Olancho</option>
+              </select>
+            </div>
+            <div class="col-md-12 d-flex justify-content-center mt-3">
+              <button type="button" class="btn btn-primary" (click)="login();">Iniciar Sesión</button>
+            </div>
+            <div class="mt-3 text-center">
+              <a href="#">¿Olvidó su contraseña?</a>
+            </div>
+            <div class="mt-3 text-center">
+              <span>¿No está registrado? <a href="#">Registrarse</a></span>
+            </div>
+          </div>   
+          <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+            {{ errorMessage }}
+          </div>       
+        </div>
+        
+      </div>
+     
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  

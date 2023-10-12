@@ -8,13 +8,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PagesModule } from './pages/pages.module';
 import { PacienteModule } from './paciente/paciente.module';
-import { AuthModule } from './auth/auth.module';
+import { LoginModule } from './login/login.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { RegistroComponent } from './login/registro/registro.component'; // Importa RegistroComponent si es necesario
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    RegistroComponent
     
   ],
   imports: [
@@ -24,12 +28,13 @@ import { FormsModule } from '@angular/forms';
     NgbModule,
     PagesModule,
     PacienteModule,
-    AuthModule,
+    LoginModule,
     HttpClientModule,
     FormsModule,
+    RouterModule
    
   ],
-  providers: [],
+ 
   bootstrap: [AppComponent]
 })
 export class AppModule { }
