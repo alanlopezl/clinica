@@ -2,6 +2,8 @@ import { ChangeDetectorRef, Component, ViewChild, OnInit } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { LoginService } from '../login/login.service'; // Ajusta la ruta según la ubicación de tu servicio de autenticación
+import { Router } from '@angular/router';
+
 
 interface User {
   nombre: string;
@@ -15,13 +17,15 @@ interface User {
 })
 export class PagesComponent implements OnInit {
   @ViewChild(MatSidenav)
-  sidenav!: MatSidenav;
+  sidenav!: MatSidenav;  
   loggedInUser: User | undefined; // Aquí debes declarar loggedInUser
+  selectedTab: string = 'defaultTabValue';
   
   constructor(
     private observer: BreakpointObserver,
     private cd: ChangeDetectorRef,
-    private loginService: LoginService
+    private loginService: LoginService,    
+  private router: Router
   ) {}
 
   ngOnInit() {
@@ -53,4 +57,15 @@ export class PagesComponent implements OnInit {
     });
     this.cd.detectChanges();
   }
+
+
+  navigateTo(selectedOption: string) {
+    if (selectedOption === 'usuarios') {
+      this.router.navigate(['/usuarios']);
+    } else if (selectedOption === 'roles') {
+      this.router.navigate(['/roles']);
+    }
+
+  }
+  
 }

@@ -4,6 +4,7 @@ const mysql = require('mysql')
 const myconn = require('express-myconnection')
 const routes = require('./routes')
 const bcrypt = require('bcrypt');
+const cors = require('cors');
 
 
 
@@ -22,6 +23,7 @@ const conn = mysql.createConnection(dbOptions);
 //middlewares
 app.use(myconn(mysql, dbOptions, 'single'))
 app.use(express.json());
+app.use(cors());
 
 
 //routes
@@ -36,46 +38,6 @@ app.listen(app.get('port'), ()=>{
 })
     
 
-/*
-
-// Ruta de autenticación
-app.post('/login', (req, res) => {
-    console.log('Solicitud POST recibida en /login');
-  const { username, password } = req.body;
-  console.log('Username:', username);
-  console.log('Password:', password);
-
-  if (!username || !password) {
-    return res.status(400).json({ message: 'Por favor, proporciona un nombre de usuario y contraseña.' });
-  }
-
-  conn.query('SELECT * FROM tbl_usuario WHERE Usuario = ?', [username], (err, results) => {
-    if (err) {
-      return res.status(500).json({ message: 'Error de base de datos.' });
-    }
-
-    if (results.length === 0) {
-      return res.status(401).json({ message: 'Credenciales incorrectas.' });
-    }
-
-    const user = results[0];
-
-    bcrypt.compare(password, user.Contraseña, (bcryptErr, bcryptResult) => {
-      if (bcryptErr) {
-        return res.status(500).json({ message: 'Error al comparar contraseñas.' });
-      }
-
-      if (bcryptResult) {
-        // Contraseña válida, genera un token de autenticación
-        const token = jwt.sign({ userId: user.id_usuario, username: user.Usuario }, secretKey, { expiresIn: '1h' });
-        res.status(200).json({ token });
-      } else {
-        // Contraseña incorrecta
-        res.status(401).json({ message: 'Credenciales incorrectas.' });
-      }
-    });
-  });
-});*/
 
 
 // Ruta de inicio de sesión
@@ -102,3 +64,25 @@ app.post('/login', (req, res) => {
     });
   });
   
+  //metodo para mostrar usuarios
+  app.get('/usuarios', (req, res) => {
+    // Consulta la base de datos para obtener la lista de usuarios
+    const sql = 'SELECT * FROM tbl_usuario';
+    conn.query(sql, (err, results) => {
+      if (err) {
+        console.error('Error en la consulta a la base de datos:', err);
+        return res.status(500).json({ message: 'Error al obtener la lista de usuarios.' });
+      }
+  
+      // Devuelve la lista de usuarios en formato JSON
+      res.status(200).json({ users: results });
+    });
+  });
+
+
+// Ruta para obtener el nombre de usuario
+app.get('/user', (req, res) => {
+  // Simplemente devuelve el nombre de usuario
+  res.status(200).json({ nombre: 'Nombre de usuario' });
+});
+
